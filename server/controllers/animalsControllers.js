@@ -1,87 +1,66 @@
-const Animal = require('../models/Animal')
+const {allAnimals, allCats, allDogs, animalDetail, create, update, deleted} = require('../queries/animalQueries')
 
-getAllAnimals = async (req,res) => {
+const getAllAnimals = async (req,res) => {
     try {
-        const animals = await Animal.findAll()
+        const animals = await allAnimals()
         res.json(animals)
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-getAllCats = async (req,res) => {
+const getAllCats = async (req,res) => {
     try {
-        const cats = await Animal.findAll({where: {animal_type: 'cat'}})
+        const cats = await allCats()
         res.json(cats)
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-getAllDogs = async (req,res) => {
+const getAllDogs = async (req,res) => {
     try {
-        const dogs = await Animal.findAll({where: {animal_type: 'dog'}})
+        const dogs = await allDogs()
         res.json(dogs)
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-getAnimalByID = async (req, res) => {
+const getAnimalByID = async (req, res) => {
     try {
         const id = req.params.id
-        const animalDetail = await Animal.findByPk(id)
-        res.json(animalDetail)
+        const detail = await animalDetail(id)
+        res.json(detail)
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-createAnimal = async (req,res) => {
+const createAnimal = async (req,res) => {
     try {
-        const {animal_type, breed_type, name, age, health, image, location, user_id} = req.body
-        const newAnimal = await Animal.create({animal_type, breed_type, name, age, health, image, location, user_id})
+        const newAnimal = await create(req.body)
         res.status(201).json(newAnimal)
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-updateAnimal = async (req,res) => {
+const updateAnimal = async (req,res) => {
     try {
         const id = req.params.id
-        const {animal_type, breed_type, name, age, health, image, location, user_id} = req.body
-        const animal = await Animal.findByPk(id)
-        if (animal) {
-            animal.animal_type = animal_type
-            animal.breed_type = breed_type
-            animal.name = name
-            animal.age = age
-            animal.health = health
-            animal.image = image
-            animal.location = location
-            animal.user_id = user_id
-
-            await animal.save()
-            res.json(animal)
-        } else {
-            res.status(404).send('Animal not found')
-        }
+        const animal = await update(id, req.body)
+        res.json(animal)
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-deleteAnimal = async (req,res) => {
+const deleteAnimal = async (req,res) => {
     try {
         const id = req.params.id
-        const animal = await Animal.findByPk(id)
-        if (animal) {
-            await animal.destroy()
-            res.status(410).send('Deleted')
-        } else {
-            res.status(404).send('Animal not found')
-        }
+        await deleted(id)
+        res.status(204).end()
     } catch (err) {
         res.status(500).send(err.message)
     }
