@@ -1,31 +1,24 @@
-const {DataTypes} = require('sequelize')
-const sequelize = require('../config/database')
+const pool = require('../config/db')
+const bcrypt = require('bcrypt')
 
-const User = sequelize.define('User', {
-  name: {
-    type: DataTypes.STRING,
-  },
-  email: {
-    type: DataTypes.STRING,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
-  },
-  image: {
-    type: DataTypes.STRING,
-  },
-  location: {
-    type: DataTypes.STRING,
-  },
-  username: {
-    type: DataTypes.STRING,
-    unique: true,
-  },
-  role: {
-    type: DataTypes.STRING,
-    defaultValue: 'user',
-  },
-})
+const createUser = async (user) => {
+  const { username, email, password, name, image } = user
+  const hashedPassword = await bcrypt.hash(password, 10)
+  const result = await pool.query(
+    'INSERT INTO users (username, email, password, name, image) VALUES ($1, $2, $3) RETURNING *',
+    [username, email, hashedPassword, name, image]
+  )
+  return result.rows[0]
+}
 
-module.exports = User
+const findUserByEmail = async (email) => {
+  const result = await pool.query('SELECT * FROM users WHERE email = $1', [email])
+  return result.rows[0]
+}
+
+const findUserById = async (id) => {
+  const result = await pool.query('SELECT * FROM users WHERE id = $1', [id])
+  return result.rows[0]
+}
+
+module.exports = { createUser, findUserByEmail, findUserById }
