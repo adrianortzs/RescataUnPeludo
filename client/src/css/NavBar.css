@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4; /* Cambia el color de fondo si lo deseas */
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover; /* Para asegurarse de que la imagen no se distorsione */
+  }
+  
+  .site-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .profile-icon a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .profile-icon a:hover {
+    color: #666;
+  }

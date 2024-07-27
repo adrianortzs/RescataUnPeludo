@@ -2,19 +2,16 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import AnimalList from './components/AnimalList'
-
+import NavBar from './components/NavBar'
 
 function App() {
   return (
     <Router>
       <div className='app'>
-        <header className="header">
-          <h1>Rescata a un Peludo</h1>
+        <NavBar/>
           <Routes>
             <Route path="/" element={<AnimalList />} />
-            {/* <Route path="/animals/:id" element={<AnimalDetail />} /> Detalles del animal */}
           </Routes>
-        </header>
       </div>
     </Router>
   )

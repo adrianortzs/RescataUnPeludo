@@ -1,0 +1,29 @@
+.subheader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4; /* Cambia el color de fondo si lo deseas */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .filter {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px; /* Espacio entre filtros */
+  }
+  
+  .filter label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .filter select,
+  .filter input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
