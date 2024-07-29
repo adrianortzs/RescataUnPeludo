@@ -1,0 +1,289 @@
+.homePage {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+  
+.homePage-header {
+    margin-bottom: 40px;
+}
+  
+.homePage-header h1 {
+    font-size: 3rem;
+    color: #4CAF50;
+    margin: 0;
+}
+  
+.homePage-subtitle {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 10px;
+}
+  
+.homePage-content {
+    text-align: center;
+}
+  
+.homePage-buttons {
+    margin-top: 20px;
+}
+  
+.homePage-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+  
+.homePage-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+  
+.homePage-button:active {
+    background-color: #388e3c;
+}
+
+
+.dogs-page {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background: linear-gradient(to right, #a2c2e4, #6a8eb1);
+    text-align: center;
+}
+  
+.dogs-page h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+  
+.dogs-page ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.dogs-page li {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    color: #333;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+  
+.dogs-page li:hover {
+    background: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+.cats-page {
+    font-family: 'Arial', sans-serif;
+    padding: 40px 20px;
+    background: linear-gradient(to right, #d0f0c0, #a4d6a5);
+    text-align: center;
+}
+  
+.cats-page h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+  
+.animal-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+  
+  
+.favorite-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #f00;
+    cursor: pointer;
+    z-index: 10;
+}
+  
+.animal-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Estilo para el overlay del popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegúrate de que el popup esté encima de otros elementos */
+  }
+  
+  /* Estilo para el contenido del popup */
+  .popup-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrar el texto */
+    animation: fadeIn 0.3s ease-in-out; /* Animación de entrada */
+  }
+  
+  /* Animación de entrada */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  /* Estilo para el botón de cierre */
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .popup-close:hover {
+    color: #e74c3c; /* Color rojo en hover para el botón de cierre */
+  }
+  
+  /* Estilo para la imagen del popup */
+  .popup-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para los párrafos */
+  .popup-content p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 16px;
+  }
+  
+  /* Estilo para los encabezados */
+  .popup-content h3 {
+    margin: 10px 0;
+    color: #333;
+  }
+
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .register-form h2 {
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .register-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .register-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #27ae60;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .register-form button:hover {
+    background: #219150;
+  }
+
+  /* Estilo para el formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .login-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .login-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #27ae60;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background: #219150;
+  }
+  
+  
+  

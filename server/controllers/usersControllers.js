@@ -4,7 +4,6 @@ const { createUser, findUserByEmail, findUserById } = require('../queries/userQu
 
 const registerUser = async (req, res) => {
   try {
-    console.log('Received data:', req.body);
     const user = await createUser(req.body)
     res.status(201).json(user)
   } catch (err) {
@@ -30,13 +29,4 @@ const loginUser = async (req, res) => {
   }
 }
 
-const getUserProfile = async (req, res) => {
-  try {
-    const user = await findUserById(req.user.id)
-    res.json(user)
-  } catch (err) {
-    res.status(500).send(err.message)
-  }
-}
-
-module.exports = { registerUser, loginUser, getUserProfile }
+module.exports = { registerUser, loginUser }
