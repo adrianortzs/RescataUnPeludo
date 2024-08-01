@@ -1,24 +1,40 @@
-import {Link} from 'react-router-dom'
-import {useState} from 'react'
-import {FaRegHeart, FaHeart} from 'react-icons/fa' 
+import { useState } from 'react'
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
+import favorite from '../context/FavoriteContext'; 
 import '../css/components.css'
 
-const AnimalCard = ({animal}) => {
+const AnimalCard = ({animal, onShowDetails}) => {
+  const { addToFavorites, removeFromFavorites, favorites } = favorite.useFavorites();
+  const isFavorite = favorites.some((fav) => fav.id === animal.id);
   const [marckedAsFavorite, setMarckedAsFavorite] = useState(false)
 
   const toggleFavorite = () => {
-    setMarckedAsFavorite(!marckedAsFavorite)
-  }
+    if (isFavorite) {
+      removeFromFavorites(animal.id);
+      setMarckedAsFavorite(false)
+    } else {
+      addToFavorites(animal);
+      setMarckedAsFavorite(true)
+    }
+  };
 
   return (
     <div className="animal-card">
-      <div className="favorite-icon" onClick={toggleFavorite}>
-        {marckedAsFavorite ? <FaHeart /> : <FaRegHeart />}
-      </div>
       <img src={animal.image} alt={animal.name} />
-      <h3>{animal.name}</h3>
-      <p>{animal.gender}</p>
-      <Link to={`/animals/${animal.id}`}>+ Información</Link>
+      <div className="animal-card-section">
+        <p>{animal.name}</p>
+        <p>{animal.sex}</p>
+      </div>
+      <div className="animal-card-section">
+        <p>{animal.age}</p>
+        <p>{animal.location}</p>
+      </div>
+      <div className="animal-card-section">
+        <button onClick={() => onShowDetails(animal.id)}>Conóceme</button>
+        <div className="favorite-icon" onClick={toggleFavorite}>
+          {marckedAsFavorite ? <FaHeart /> : <FaRegHeart />}
+        </div>
+      </div>
     </div>
   )
 }

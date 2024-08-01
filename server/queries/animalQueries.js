@@ -6,12 +6,12 @@ const allAnimals = async () => {
 }
   
 const allCats = async () => {
-  const data = await client.query('SELECT * FROM animals WHERE type = $1', ['cat'])
+  const data = await client.query('SELECT * FROM animals WHERE animal_type = $1', ['Gato'])
   return data.rows
 }
   
 const allDogs = async () => {
-  const data = await client.query('SELECT * FROM animals WHERE type = $1', ['dog'])
+  const data = await client.query('SELECT * FROM animals WHERE animal_type = $1', ['Perro'])
   return data.rows
 }
 

@@ -22,6 +22,9 @@ const deleteAnimal = (id, token) =>
 const registerUser = (user) => axios.post(`${api_url}/users/register`, user)
 const loginUser = (credentials) => axios.post(`${api_url}/users/login`, credentials)
 
-const api = {getAllAnimals, getAllCats, getAllDogs, getAnimalById, createAnimal, updateAnimal, deleteAnimal, registerUser, loginUser}
+const getAllProducts = () => axios.get(`${api_url}/products`)
+const sendEmail = (formData) => axios.post(`${api_url}/email`, formData)
+
+const api = {getAllAnimals, getAllCats, getAllDogs, getAnimalById, createAnimal, updateAnimal, deleteAnimal, registerUser, loginUser, getAllProducts, sendEmail}
 
 export default api

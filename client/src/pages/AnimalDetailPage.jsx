@@ -1,11 +1,17 @@
-import {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { FaRegHeart, FaHeart} from 'react-icons/fa' 
 import api from '../services/api'
 import '../css/pages.css'
 
-const AnimalDetailPage = ({onClose}) => {
+const AnimalDetailPage = ({ onClose }) => {
     const {id} = useParams()
     const [animal, setAnimal] = useState(null)
+    const [marckedAsFavorite, setMarckedAsFavorite] = useState(false)
+
+    const toggleFavorite = () => {
+        setMarckedAsFavorite(!marckedAsFavorite)
+    }
     
     useEffect(() => {
         api.getAnimalById(id)
@@ -13,20 +19,26 @@ const AnimalDetailPage = ({onClose}) => {
         .catch(error => console.error(error))
     }, [id])
     
-    if (!animal) return <p>Loading...</p>
-    
     return (
     <div className="popup-overlay">
         <div className="popup-content">
             <button className="popup-close" onClick={onClose}>x</button>
             <img src={animal.image} alt={animal.name} className="popup-image" />
-            <h3>{animal.name}</h3>
+            <div>
+                <h3>Nombre: {animal.name}</h3>
+                <div className="favorite-icon" onClick={toggleFavorite}>
+                    {marckedAsFavorite ? <FaHeart /> : <FaRegHeart />}
+                </div>
+            </div>
+            <p>Sexo: {animal.sex}</p>
+            <p>Tamaño: {animal.size}</p>
+            <p>Edad: {animal.age}</p>
             <p>Color: {animal.color}</p>
-            <p>Race: {animal.race}</p>
-            <p>Gender: {animal.gender}</p>
-            <p>Age: {animal.age}</p>
-            <p>Health: {animal.health}</p>
-            <p>Location: {animal.location}</p>
+            {/* <p>Apto con niños: {animal.}</p>
+            <p>Apto con perros: {animal.}</p>
+            <p>Apto con gatos: {animal.}</p> */}
+            <p>Ubicación: {animal.location}</p>
+            <button>¡Quiero adoptar!</button>
         </div>
     </div>
   )
