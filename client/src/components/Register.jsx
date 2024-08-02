@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom' 
 import api from '../services/api'
+import '../css/components.css'
 
 const Register = ({ onClose }) => {
     const navigate = useNavigate()

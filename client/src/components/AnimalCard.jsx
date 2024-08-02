@@ -1,20 +1,15 @@
-import { useState } from 'react'
-import { FaRegHeart, FaHeart } from 'react-icons/fa'
 import favorite from '../context/FavoriteContext'; 
 import '../css/components.css'
 
 const AnimalCard = ({animal, onShowDetails}) => {
   const { addToFavorites, removeFromFavorites, favorites } = favorite.useFavorites();
   const isFavorite = favorites.some((fav) => fav.id === animal.id);
-  const [marckedAsFavorite, setMarckedAsFavorite] = useState(false)
 
   const toggleFavorite = () => {
     if (isFavorite) {
       removeFromFavorites(animal.id);
-      setMarckedAsFavorite(false)
     } else {
       addToFavorites(animal);
-      setMarckedAsFavorite(true)
     }
   };
 
@@ -32,7 +27,7 @@ const AnimalCard = ({animal, onShowDetails}) => {
       <div className="animal-card-section">
         <button onClick={() => onShowDetails(animal.id)}>Conóceme</button>
         <div className="favorite-icon" onClick={toggleFavorite}>
-          {marckedAsFavorite ? <FaHeart /> : <FaRegHeart />}
+          <p>Favorito</p>
         </div>
       </div>
     </div>

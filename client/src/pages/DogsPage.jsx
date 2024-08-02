@@ -38,7 +38,7 @@ const DogsPage = () => {
       return (
         (filters.sex === '' || dog.sex === filters.sex) &&
         (filters.size === '' || dog.size.toLowerCase() === filters.size.toLowerCase()) &&
-        (filters.age === '' || dog.age === filters.age) &&
+        (filters.age === '' || dog.age.includes(filters.age)) &&
         (filters.location === '' || dog.location.toLowerCase() === filters.location.toLowerCase())
       )
     })
@@ -46,7 +46,7 @@ const DogsPage = () => {
   }
 
   return (
-    <div className='dogs-cats'>
+    <div className='animals-page'>
       <h2>¡ADOPTA UN PERRO HOY!¡ENCUENTRA A TU COMPAÑERO IDEAL!</h2>
       <Filters onFilterChange={applyFilterChange} />
       <div className='animal-cards-container'>

@@ -1,4 +1,3 @@
-// Header.jsx
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import favorite from '../context/FavoriteContext'
@@ -8,7 +7,7 @@ const Header = () => {
   const navigate = useNavigate()
   const [profileMenuOpen, setProfileMenuOpen] = useState(false)
   const [isLogIn, setIsLogIn] = useState(false)
-  const { favorites } = favorite.useFavorites() // Use the favorites context
+  const { favorites } = favorite.useFavorites()
 
   useEffect(() => {
     const token = localStorage.getItem('authToken')

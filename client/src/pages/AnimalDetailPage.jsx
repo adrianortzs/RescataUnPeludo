@@ -6,7 +6,7 @@ import '../css/pages.css'
 
 const AnimalDetailPage = ({ onClose }) => {
     const {id} = useParams()
-    const [animal, setAnimal] = useState(null)
+    const [animal, setAnimal] = useState([])
     const [marckedAsFavorite, setMarckedAsFavorite] = useState(false)
 
     const toggleFavorite = () => {
@@ -34,9 +34,6 @@ const AnimalDetailPage = ({ onClose }) => {
             <p>Tamaño: {animal.size}</p>
             <p>Edad: {animal.age}</p>
             <p>Color: {animal.color}</p>
-            {/* <p>Apto con niños: {animal.}</p>
-            <p>Apto con perros: {animal.}</p>
-            <p>Apto con gatos: {animal.}</p> */}
             <p>Ubicación: {animal.location}</p>
             <button>¡Quiero adoptar!</button>
         </div>
