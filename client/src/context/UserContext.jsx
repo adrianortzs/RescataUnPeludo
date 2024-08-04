@@ -1,26 +1,24 @@
-// UserContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react'
 
-const UserContext = createContext();
+const UserContext = createContext()
 
 const useUser = () => {
-  return useContext(UserContext);
-};
+  return useContext(UserContext)
+}
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({ email: '' });
+  const [user, setUser] = useState({ email: '' })
 
-  // Function to update the user
   const updateUser = (userData) => {
-    setUser(userData);
-  };
+    setUser(userData)
+  }
 
   return (
     <UserContext.Provider value={{ user, updateUser }}>
       {children}
     </UserContext.Provider>
-  );
-};
+  )
+}
 
 const user = { UserProvider, useUser}
 

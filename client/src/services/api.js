@@ -1,6 +1,4 @@
 import axios from 'axios'
-import cart from '../context/CartContext'
-import user from '../context/UserContext'
 
 const api_url = 'http://localhost:3001'
 

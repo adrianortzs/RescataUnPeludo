@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { FaRegHeart, FaHeart } from 'react-icons/fa'; 
-import api from '../services/api';
-import '../css/pages.css';
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
+import api from '../services/api'
+import '../css/pages.css'
 
 const AnimalDetailPage = ({ onClose }) => {
-  const { id } = useParams();
-  const [animal, setAnimal] = useState([]);
-  const [markedAsFavorite, setMarkedAsFavorite] = useState(false);
+  const { id } = useParams()
+  const [animal, setAnimal] = useState([])
+  const [markedAsFavorite, setMarkedAsFavorite] = useState(false)
 
   const toggleFavorite = () => {
-    setMarkedAsFavorite(!markedAsFavorite);
-  };
+    setMarkedAsFavorite(!markedAsFavorite)
+  }
 
   useEffect(() => {
     api.getAnimalById(id)
       .then(response => setAnimal(response.data))
-      .catch(error => console.error(error));
-  }, [id]);
+      .catch(error => console.error(error))
+  }, [id])
 
   return (
     <div className="info-popup-overlay">
@@ -40,7 +40,7 @@ const AnimalDetailPage = ({ onClose }) => {
         <Link to='/adopt'>¡Quiero adoptar!</Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AnimalDetailPage;
+export default AnimalDetailPage

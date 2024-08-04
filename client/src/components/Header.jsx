@@ -12,7 +12,7 @@ const Header = () => {
   const [showLogin, setShowLogin] = useState(false)
   const [register, setRegister] = useState(false)
   const [showRegister, setShowRegister] = useState(false)
-  const { favorites } = favorite.useFavorites();
+  const { favorites } = favorite.useFavorites()
 
   useEffect(() => {
     const token = localStorage.getItem('authToken')

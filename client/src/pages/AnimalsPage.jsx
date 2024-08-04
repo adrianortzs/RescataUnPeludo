@@ -1,37 +1,34 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../services/api';
-import AnimalCard from '../components/AnimalCard';
-import AllAnimalsFilters from '../components/AllAnimalsFilters';
-import AnimalDetailPage from './AnimalDetailPage';
-import '../css/pages.css';
+import { useEffect, useState } from 'react'
+import api from '../services/api'
+import AnimalCard from '../components/AnimalCard'
+import AllAnimalsFilters from '../components/AllAnimalsFilters'
+import AnimalDetailPage from './AnimalDetailPage'
+import '../css/pages.css'
 
 const AnimalsPage = () => {
-  const [animals, setAnimals] = useState([]);
-  const [filteredAnimals, setFilteredAnimals] = useState([]);
-  const [showAnimalDetail, setShowAnimalDetail] = useState(false);
-  const [selectedAnimalId, setSelectedAnimalId] = useState(null);
-
-  const navigate = useNavigate();
+  const [animals, setAnimals] = useState([])
+  const [filteredAnimals, setFilteredAnimals] = useState([])
+  const [showAnimalDetail, setShowAnimalDetail] = useState(false)
+  const [selectedAnimalId, setSelectedAnimalId] = useState(null)
 
   const handleCardClick = (id) => {
-    setShowAnimalDetail(true);
-    setSelectedAnimalId(id);
-  };
+    setShowAnimalDetail(true)
+    setSelectedAnimalId(id)
+  }
 
   const handleClosePopup = () => {
-    setShowAnimalDetail(false);
-    setSelectedAnimalId(null);
-  };
+    setShowAnimalDetail(false)
+    setSelectedAnimalId(null)
+  }
 
   useEffect(() => {
     api.getAllAnimals()
       .then(response => {
-        setAnimals(response.data);
-        setFilteredAnimals(response.data);
+        setAnimals(response.data)
+        setFilteredAnimals(response.data)
       })
-      .catch(error => console.error(error));
-  }, []);
+      .catch(error => console.error(error))
+  }, [])
 
   const applyFilterChange = (filters) => {
     const filtered = animals.filter(animal => {
@@ -41,10 +38,10 @@ const AnimalsPage = () => {
         (filters.size === '' || animal.size.toLowerCase() === filters.size.toLowerCase()) &&
         (filters.age === '' || animal.age === filters.age) &&
         (filters.location === '' || animal.location.toLowerCase() === filters.location.toLowerCase())
-      );
-    });
-    setFilteredAnimals(filtered);
-  };
+      )
+    })
+    setFilteredAnimals(filtered)
+  }
 
   return (
     <div className="animals-page">
@@ -59,8 +56,8 @@ const AnimalsPage = () => {
         <AnimalDetailPage onClose={handleClosePopup} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default AnimalsPage;
+export default AnimalsPage
 

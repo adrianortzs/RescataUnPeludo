@@ -7,11 +7,11 @@ const AnimalCard = ({animal, onShowDetails}) => {
 
   const toggleFavorite = () => {
     if (isFavorite) {
-      removeFromFavorites(animal.id);
+      removeFromFavorites(animal.id)
     } else {
-      addToFavorites(animal);
+      addToFavorites(animal)
     }
-  };
+  }
 
   return (
     <div className="animal-card">
