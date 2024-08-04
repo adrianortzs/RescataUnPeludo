@@ -1,9 +1,9 @@
-import favorite from '../context/FavoriteContext'; 
+import favorite from '../context/FavoriteContext'
 import '../css/components.css'
 
 const AnimalCard = ({animal, onShowDetails}) => {
-  const { addToFavorites, removeFromFavorites, favorites } = favorite.useFavorites();
-  const isFavorite = favorites.some((fav) => fav.id === animal.id);
+  const { addToFavorites, removeFromFavorites, favorites } = favorite.useFavorites()
+  const isFavorite = favorites.some((fav) => fav.id === animal.id)
 
   const toggleFavorite = () => {
     if (isFavorite) {

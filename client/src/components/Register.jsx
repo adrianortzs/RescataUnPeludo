@@ -23,6 +23,7 @@ const Register = ({ onClose }) => {
         .then(response => {
             console.log(response.data)
             navigate('/login')
+            onClose(true)
         })
         .catch(error => console.error(error))
     }
@@ -30,13 +31,13 @@ const Register = ({ onClose }) => {
     return (
         <div className="popup-overlay">
             <div className="popup-content">
-                <button className="popup-close" onClick={ onClose }>x</button>
-                <form onSubmit={ handleSubmit } className="register-form">
+            <button className="popup-close" onClick={()=> onClose(false)}>x</button>
+                <form onSubmit={handleSubmit} className="register-form">
                     <h2>REGISTRO</h2>
-                    <input type="text" name="name" placeholder="Nombre" onChange={ handleChange } />
-                    <input type="text" name="username" placeholder="Nombre de usuario" onChange={ handleChange } />
-                    <input type="email" name="email" placeholder="Email" onChange={ handleChange } />
-                    <input type="password" name="password" placeholder="Contraseña" onChange={ handleChange } />
+                    <input type="text" name="name" placeholder="Nombre" onChange={handleChange} />
+                    <input type="text" name="username" placeholder="Nombre de usuario" onChange={handleChange} />
+                    <input type="email" name="email" placeholder="Email" onChange={handleChange} />
+                    <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
                     <button type="submit">Registrarse</button>
                 </form>
             </div>

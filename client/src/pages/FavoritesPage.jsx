@@ -1,4 +1,3 @@
-// FavoritesPage.jsx
 import favorite from '../context/FavoriteContext'
 import AnimalCard from '../components/AnimalCard'
 import '../css/components.css'
@@ -20,7 +19,7 @@ const FavoritesPage = () => {
             />
           ))
         ) : (
-          <p>No hay favoritos aún.</p>
+          <p>Añade animales a favoritos para verlos aquí.</p>
         )}
       </div>
     </div>

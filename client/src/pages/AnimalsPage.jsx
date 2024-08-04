@@ -1,36 +1,37 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import api from '../services/api'
-import AnimalCard from '../components/AnimalCard'
-import AllAnimalsFilters from '../components/AllAnimalsFilters'
-import AnimalDetailPage from './AnimalDetailPage'
-import '../css/pages.css'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
+import AnimalCard from '../components/AnimalCard';
+import AllAnimalsFilters from '../components/AllAnimalsFilters';
+import AnimalDetailPage from './AnimalDetailPage';
+import '../css/pages.css';
 
 const AnimalsPage = () => {
-  const [animals, setAnimals] = useState([])
-  const [selectedAnimalId, setSelectedAnimalId] = useState(null)
-  const [filteredAnimals, setFilteredAnimals] = useState([])
+  const [animals, setAnimals] = useState([]);
+  const [filteredAnimals, setFilteredAnimals] = useState([]);
+  const [showAnimalDetail, setShowAnimalDetail] = useState(false);
+  const [selectedAnimalId, setSelectedAnimalId] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleCardClick = (id) => {
-    setSelectedAnimalId(id)
-    navigate(`/animals/${id}`)
-  }
+    setShowAnimalDetail(true);
+    setSelectedAnimalId(id);
+  };
 
   const handleClosePopup = () => {
-    setSelectedAnimalId(null)
-    navigate(-1)
-  }
+    setShowAnimalDetail(false);
+    setSelectedAnimalId(null);
+  };
 
   useEffect(() => {
     api.getAllAnimals()
       .then(response => {
-        setAnimals(response.data)
-        setFilteredAnimals(response.data)
+        setAnimals(response.data);
+        setFilteredAnimals(response.data);
       })
-      .catch(error => console.error(error))
-  }, [])
+      .catch(error => console.error(error));
+  }, []);
 
   const applyFilterChange = (filters) => {
     const filtered = animals.filter(animal => {
@@ -40,10 +41,10 @@ const AnimalsPage = () => {
         (filters.size === '' || animal.size.toLowerCase() === filters.size.toLowerCase()) &&
         (filters.age === '' || animal.age === filters.age) &&
         (filters.location === '' || animal.location.toLowerCase() === filters.location.toLowerCase())
-      )
-    })
-    setFilteredAnimals(filtered)
-  }
+      );
+    });
+    setFilteredAnimals(filtered);
+  };
 
   return (
     <div className="animals-page">
@@ -51,15 +52,15 @@ const AnimalsPage = () => {
       <AllAnimalsFilters onFilterChange={applyFilterChange} />
       <div className="animal-cards-container">
         {filteredAnimals.map(animal => (
-          <AnimalCard key={animal.id} animal={animal} onShowDetails={()=>handleCardClick(animal.id)} />
+          <AnimalCard key={animal.id} animal={animal} onShowDetails={() => handleCardClick(animal.id)} />
         ))}
       </div>
-      {selectedAnimalId && (
+      {showAnimalDetail && selectedAnimalId && (
         <AnimalDetailPage onClose={handleClosePopup} />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AnimalsPage
+export default AnimalsPage;
 

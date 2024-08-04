@@ -1,4 +1,4 @@
- import cartContext from '../context/CartContext'
+import cartContext from '../context/CartContext'
 import '../css/components.css'
 
 const ProductCard = ({ product }) => {

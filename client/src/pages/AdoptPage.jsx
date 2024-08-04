@@ -20,6 +20,7 @@ const AdoptPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    console.log('click')
     api.sendEmail(formData)
     .then(response => {
       console.log('Success:', response.data)

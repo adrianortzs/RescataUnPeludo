@@ -1,4 +1,6 @@
 import axios from 'axios'
+import cart from '../context/CartContext'
+import user from '../context/UserContext'
 
 const api_url = 'http://localhost:3001'
 
@@ -24,7 +26,8 @@ const loginUser = (credentials) => axios.post(`${api_url}/users/login`, credenti
 
 const getAllProducts = () => axios.get(`${api_url}/products`)
 const sendEmail = (formData) => axios.post(`${api_url}/email`, formData)
+const sendOrderConfirmationEmail = (data) => axios.post(`${api_url}/products`, data)
 
-const api = {getAllAnimals, getAllCats, getAllDogs, getAnimalById, createAnimal, updateAnimal, deleteAnimal, registerUser, loginUser, getAllProducts, sendEmail}
+const api = {getAllAnimals, getAllCats, getAllDogs, getAnimalById, createAnimal, updateAnimal, deleteAnimal, registerUser, loginUser, getAllProducts, sendEmail, sendOrderConfirmationEmail}
 
 export default api

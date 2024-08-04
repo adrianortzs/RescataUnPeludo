@@ -21,7 +21,8 @@ const Login = ({ onClose }) => {
         .then(response => {
             const token = response.data.token
             localStorage.setItem('authToken', token)
-            navigate('/')
+            navigate('/animals')
+            onClose(true)
         })
         .catch(error => console.error(error))
     }
@@ -29,7 +30,7 @@ const Login = ({ onClose }) => {
     return (
         <div className="popup-overlay">
             <div className="popup-content">
-                <button className="popup-close" onClick={ onClose }>x</button>
+                <button className="popup-close" onClick={()=> onClose(false)}>x</button>
                 <form onSubmit={ handleSubmit } className="register-form">
                     <h2>INICIAR SESION</h2>
                     <input type="email" name="email" placeholder="Email" onChange={ handleChange } />
